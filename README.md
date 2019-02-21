@@ -33,8 +33,8 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
  
 	 If you are using Proguard in your project, you must add the following lines to your configuration:
 
-		-dontwarn com.userexperior.**  
-		-keep class com.userexperior.** { *; }
+		-dontwarn Com.Userexperior.**  
+		-keep class Com.Userexperior.** { *; }
  
 
 ## B.  Customizing UserExperior with Key APIs
@@ -43,25 +43,25 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
 
 	UserExperior SDK by  default takes device id as user identifier. However, you can specify any unique user identifier of your choice (eg. Email Id, Phone Number, etc.) as custom user identifier. This identifier will show up in UserExperior portal.
 
-		void setUserIdentifier(String userIdentifier)
+		void SetUserIdentifier(String userIdentifier)
 	
 	Note: Max `userIdentifier` limit is 250 chars only
 
 	Code Example:
 	
-		UserExperior.setUserIdentifier(“pass-your-user-id-here”); 
+		UserExperior.SetUserIdentifier(“pass-your-user-id-here”); 
 
 2. **Add Events/Messages/Tags**
 
 	UserExperior SDK lets you track user events, app responses/messages of your app and tag sessions based on some conditions using very powerful API called setCustomTag.
 
-		void setCustomTag(String customTag, String customType)
+		void SetCustomTag(String customTag, String customType)
 	
 	Note: Max `customTag` limit is 250 chars only
 
 	Using this API, you can add:
 
-	1. <u>Events</u>: In UserExperior terms, an event is the Indication of Progress in user’s session. If you want to  track user events which are not auto-captured by UserExperior, use UeCustomType.EVENT in 2nd parameter.
+	1. <u>Events</u>: In UserExperior terms, an event is the Indication of Progress in user’s session. If you want to  track user events which are not auto-captured by UserExperior, use **"EVENT"** in 2nd parameter.
 
 		e.g. “Txn Completed”, “Checkout Done”, “COD Payment”, “Debit Card Payment”, “Login”, “Check Balance”, “Fund Transfer” etc.
 
@@ -70,31 +70,31 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
 		Code Example:
 		
 			try {  
-				UserExperior.setCustomTag("Mobile Top-up", UeCustomType.EVENT);  
+				UserExperior.SetCustomTag("Mobile Top-up", "EVENT");  
 			} catch (Exception e) {  
 				e.printStackTrace();  
 			}
 
-	2. <u>Messages</u>: A message can be any app message shown to user, any response or error  message or toast message or validation messages or messages shown on dialog boxes etc. which indicates a response to the user by the app. To add message, use UeCustomType.MSG in 2nd parameter.
+	2. <u>Messages</u>: A message can be any app message shown to user, any response or error  message or toast message or validation messages or messages shown on dialog boxes etc. which indicates a response to the user by the app. To add message, use **"MSG"** in 2nd parameter.
 
 		e.g. “Please select location”, “Enable location permission”, “User Name or Password is incorrect”, etc.
 
 		Code Example:
 
 			try {  
-				UserExperior.setCustomTag("Please select location!", UeCustomType.MSG);  
+				UserExperior.SetCustomTag("Please select location!", "MSG");  
 			} catch (Exception e) {  
 				e.printStackTrace();  
 			}
 
-	3. <u>Tags</u>: In UserExperior terms, a tag is a kind of behaviour  in the user’s session. You can add  Tag to  even create segments of users based on behaviour or a certain condition, you can define your own tags for your app. To define your own tag, use UeCustomType.TAG in 2nd parameter.
+	3. <u>Tags</u>: In UserExperior terms, a tag is a kind of behaviour  in the user’s session. You can add  Tag to  even create segments of users based on behaviour or a certain condition, you can define your own tags for your app. To define your own tag, use **"TAG"** in 2nd parameter.
 	
 		e.g. “Free User”, “Paid User”, “Burgundy User”, “No Txn by User”, “Free Subscription”, etc.
 
 		Code Example:
 
 			try {  
-				UserExperior.setCustomTag("Free User", UeCustomType.TAG);  
+				UserExperior.SetCustomTag("Free User", "TAG");  
 			} catch (Exception e) {  
 				e.printStackTrace();  
 			}
@@ -118,30 +118,30 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
 		
 		or you can add Tag Programmatically:
 		
-			anyView = findViewById(R.id.anyView);  
-			anyView.setTag("com.userexperior.ueSecureView");
+			anyView = FindViewById<View>(Resource.Id.anyView);  
+			anyView.SetTag("com.userexperior.ueSecureView");
 
 	- Using API
 	
-			void addInSecureViewBucket(View view)
+			void AddInSecureViewBucket(View view)
 
 		Code Example:
 		
-			anyView = findViewById(R.id.anyView);  
-			SecureViewBucket.addInSecureViewBucket(anyView);
+			anyView = FindViewById<View>(Resource.Id.anyView);  
+			SecureViewBucket.AddInSecureViewBucket(anyView);
 
 4. **Identify Screens**
 
 	UserExperior SDK automatically detects Activities and defines them as screens. However, If you have used fragments or anything else to represent your screens, then we recommend to use the "startScreen API". This API allows you to manually define screens.
 
-		void startScreen(String screenName)
+		void StartScreen(String screenName)
 	
 	Note: Max `screenName` limit is 250 chars only
 
 	Code Example:
 
 		try {  
-			UserExperior.startScreen("Notification Tab");  
+			UserExperior.StartScreen("Notification Tab");  
 		} catch (Exception e) {  
 			e.printStackTrace();  
 		}	
@@ -152,8 +152,8 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
 
 	UserExperior SDK allows you to track the load/response time of the components in your app using APIs called startTimer and endTimer. You can call startTimer API at any event on the app from which you want to track the load/response time and call a stopTimer API at the event completion. This APIs will calculate the complete response time.
 
-		void startTimer(String timerName)
-		void endTimer(String timerName)
+		void StartTimer(String timerName)
+		void EndTimer(String timerName)
 	
 	Note: Max `timerName` limit is 250 chars only
 
@@ -163,14 +163,14 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
 		
 		// Call it at API call
 		try {  
-			UserExperior.startTimer("Load Money API call");  
+			UserExperior.StartTimer("Load Money API call");  
 		} catch (Exception e) {  
 			e.printStackTrace();  
 		}
 
 		// call it at API response
 		try {  
-			UserExperior.endTimer("Load Money API call");  
+			UserExperior.EndTimer("Load Money API call");  
 		} catch (Exception e) {  
 			e.printStackTrace();  
 		}
@@ -179,15 +179,15 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
 
 	UserExperior SDK has following APIs which can be used to control the recording. The APIs stopRecording, pauseRecording, resumeRecording are optional and they should be only called when you explicitly want to override the default behavior. Basically, you can use pauseRecording and resumeRecording to bypass any user flow which you don’t want UserExperior to capture.
 
-		void stopRecording()
+		void StopRecording()
 	
 	By default, recording stops automatically once the app goes to background. However, you can stop at desired point by calling this API.
 
-		void pauseRecording()	
+		void PauseRecording()	
 	
 	This API pauses the recording, you can use resumeRecording API to resume.
 
-		void resumeRecording()
+		void ResumeRecording()
 	
 	This API resumes the recording if it is paused.
 
@@ -195,13 +195,13 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
 
 	UserExperior SDK lets you track the location of your user. If your app has location permissions enabled and you wish to know the exact city and country of your users, you can use our API setDeviceLocation. You just have to pass us the location parameters latitude and longitude which you get from the gps location in your app and through this data, we will only present City and Country on our dashboard which can be used for further analytics.
 
-		void setDeviceLocation(double latitude, double longitude)
+		void SetDeviceLocation(double latitude, double longitude)
 
 	Code Example:
 
 		try {  
 			// These are hardcoded lat, long, you can pass actual lat, long if your app uses gps  
-			UserExperior.setDeviceLocation(19.154023, 72.945204);  
+			UserExperior.SetDeviceLocation(19.154023, 72.945204);  
 		} catch (Exception e) {  
 			e.printStackTrace();  
 		}
@@ -210,7 +210,7 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
 
 	UserExperior SDK lets you send handled exceptions and their information to UserExperior Dashboard so that you can know where your app caused the handled exceptions. You must send exceptions in the catch block(s) of the handled exception. The exception object’s class name (eg. java.lang.NullPointerException) will appear in the story line of the sessions of your app on the dashboard.
 
-		void sendException(Throwable exceptionObj, String exceptionTag)
+		void SendException(Throwable exceptionObj, String exceptionTag)
 	
 	Note: Max `exceptionTag` limit is 250 chars only
 	
@@ -221,7 +221,7 @@ UserExperior will upload the data, which could be seen within 5-7 minutes on the
 				// this exception is explicitly thrown just for example  
 				throw new NullPointerException();  
 			} catch (NullPointerException e){  
-				UserExperior.sendException(e, "NullPointerException at MainActivity onBack");  
+				UserExperior.SendException(e, "NullPointerException at MainActivity onBack");  
 				e.printStackTrace();  
 			}  
 			onBackPressed();  
